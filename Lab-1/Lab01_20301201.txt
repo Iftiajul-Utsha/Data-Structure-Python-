@@ -1,0 +1,231 @@
+#1. Shift Left k Cells:
+
+def shiftLeft(source, k):
+    start_idx = 0
+    last_idx = len(source)
+    
+    for i in range(start_idx,last_idx,1):
+        if i < (len(source)-k):
+            source[i] = source[i+k]
+        else:
+            source[i] = 0
+            
+    print(source)
+    
+source = [10,20,30,40,50,60]
+shiftLeft(source, 2)
+
+
+#2. Rotate Left k cells:
+
+def rotateLeft(source, k):
+    temp = []
+    
+    for i in range(len(source)):
+        if (i < k):
+            temp.append(source[i])
+            source[i] = source[(i+k)]
+        else:
+            source[i] = source[(i+k)%len(source)]
+            
+    last = len(source)-k
+    for j in range(len(temp)):
+        source[last] = temp[j]
+        last+=1
+        
+    print(source)    
+    
+source = [10,20,30,40,50,60]
+rotateLeft(source, 3)
+
+
+#3. Remove an element from an array:
+
+source = [10,20,30,40,50,0,0]
+
+def remove(source, size, idx):
+    last_idx = size
+    start_idx = idx
+    
+    for i in range(start_idx, last_idx):
+        source[i] = source[i+1]
+        
+    print(source)
+        
+remove(source, 5, 0)
+
+
+#4. Remove all occurrences of a particular element from an array:
+
+def removeAll(source, size, el):
+    for i in range(size):
+        if source[i] == 2:
+            source[i] = 0
+    
+    for k in range(len(source)-1):
+        if source[k]== 0:
+            for j in range(k, len(source)):
+                source[k] = source[k+1]
+    
+    print(source)
+s = [10,2,30,2,50,2,2,0,0]
+removeAll(s, 8, 2)
+
+
+#5. Splitting an Array:
+
+s =  [2, 1, 1, 2, 1]
+def splitting(source):
+    
+    loop = (len(source)//2)+1
+    sum_1 = 0
+    sum_2 = 0
+    result = False
+    
+    for x in range(2):
+        for i in range(0, loop_1):
+            sum_1+=source[i]
+        for j in range(loop_1, len(source)):
+            sum_2 += source[j]
+        if sum_1 == sum_2:
+            result = True
+            break
+        else:
+            loop = (len(source)//2)
+    print(result)
+    
+splitting(s)
+
+
+
+#6. Array series:
+
+def Series(n):
+    x = 1
+    new = []
+    for i in range(n):
+        for j in range(0,n-i-1):
+            new.append(0)
+        for j in range(0,i+1):
+            new.append(x)
+            x+=1    
+        x = 1
+        
+    print(new)
+        
+Series(4)
+
+
+
+
+#7. Max Bunch Count:
+
+
+def maxCount(source):
+    count = 1
+    l1 = []
+    for i in range(len(source)-1):
+        if source[i] == source[i+1]:
+            count+=1
+        
+        else:
+            
+            l1.append(count)
+            count = 1     
+    l1.append(count)
+    
+    Max = 0    
+    for j in l1:
+        if j > Max:
+            Max = j
+            
+    print(Max)
+
+s = [1, 1, 2, 2, 1, 1, 1]
+maxCount(s)
+
+
+
+#8. Repetition:
+
+def repetition(s):
+    d = {}
+    for keys in s:
+        d[keys] = 0   
+
+    for i in s:
+        if i in d.keys():
+            d[i] +=1
+        else:
+            d[i] = 1
+            
+    for key1 in d:
+        for key2 in d:
+            if d[key1] == d[key2] and key1 != key2 and d[key1] > 1:
+                return True
+    return False
+
+s = [4,5,6,6,6,4,3,6,4]
+print(repetition(s))
+
+
+*****CIRCULAR ARRAY*****
+
+#1. Palindrome
+
+def palindrome(source, start, size):
+    
+    last_idx = (start+size-1)%len(s)
+    count= 0
+    loop = size//2
+    
+    for i in range(loop):
+        if source[start] == source[last_idx]:
+            start = (start+1)%len(source)
+            last_idx-=1
+            count +=1
+    
+    if count == loop:
+        print("TRUE")
+    else:
+        print("FALSE")
+
+s = [20,10,0,0,0,10,20,30]
+palindrome(s,5,5)   
+
+
+#2. Intersection
+
+def intersection(s1, s2, s1_start, s2_start, s1_size, s2_size):
+    
+    l1 = []
+    l2 = []
+    dest = []
+    s1_last = (s1_start+s1_size-1)%len(s1)
+    s2_last = (s2_start+s2_size-1)%len(s2)
+    
+    for i in range(s1_size):
+        l1.append(s1[s1_start])
+        s1_start = (s1_start + 1)%len(s1)
+    for j in range(s2_size):
+        l2.append(s2[s2_start])
+        s2_start = (s2_start + 1)%len(s2)
+    
+    for k in l1:
+        if k in l2:
+            dest.append(k)
+        
+    print(dest)
+
+s1 = [40,50,0,0,0,10,20,30] 
+s2 = [10,20,5,0,0,0,0,0,5,40,15,25]
+
+intersection(s1,s2, 5,8,5,7)
+
+
+#3. 
+
+
+
+
+
